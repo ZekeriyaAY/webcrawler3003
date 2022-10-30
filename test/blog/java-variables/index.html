@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <title>🐧 Java Variables - Berkay Çubuk</title>
+    <meta property="og:title" content="Java Variables - Berkay Çubuk">
+    <meta name="twitter:title" content="Java Variables - Berkay Çubuk">
+    <meta itemprop="name" content="Java Variables - Berkay Çubuk">
+    <meta name="application-name" content="Java Variables - Berkay Çubuk">
+    <meta name="og:site_name" content="Java Variables - Berkay Çubuk">
+    
+      <meta name="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta itemprop="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta property="og:description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta name="twitter:description" content="Computer Engineer, who can talk with computers &amp; websites">
+    
+    <meta name="robots" content="index,follow">
+    <meta name="HandheldFriendly" content="True">
+
+    
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/main.css" />
+
+    </head>
+<body>
+
+      <header>
+    <div class="title">Berkay Çubuk</div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
+
+
+      
+      <main>
+<section>
+  <h1>Java Variables</h1>
+  
+  <p class="comment">// Created at: Nov 19, 2020</p>
+  
+</section>
+
+<section class="post-content">
+  <p>Variables are important pieces in programming. We are using them to store data values. In java, we have different types of variables:</p>
+<ul>
+<li><code>int</code></li>
+<li><code>float</code></li>
+<li><code>char</code></li>
+<li><code>boolean</code></li>
+<li><code>byte</code></li>
+<li><code>short</code></li>
+<li><code>long</code></li>
+<li><code>double</code></li>
+<li><code>String</code> (I don&rsquo;t know why it&rsquo;s capital 😥)</li>
+</ul>
+<h2 id="how-to-create-or-declare-variables">How to create or declare variables</h2>
+<p>First specify the type and give it a name and then assign it a value.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>variable_type variable_name <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String userName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berkay&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> likeCount <span style="color:#f92672">=</span> 5<span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>Also, you can declare a variable without value.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> c<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><p>If you assign it new value, it will update itself.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String country <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Turkey&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>country<span style="color:#f92672">);</span> <span style="color:#75715e">// Turkey
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>country <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;England&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>country<span style="color:#f92672">);</span> <span style="color:#75715e">// England
+</span></span></span></code></pre></div><p>Let&rsquo;s learn the types with examples.</p>
+<h2 id="numbers">Numbers</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> number1 <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> number2 <span style="color:#f92672">=</span> 4<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// you have to cast float
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> number3 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style="color:#f92672">)</span> 4<span style="color:#f92672">.</span><span style="color:#a6e22e">5</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>number3 <span style="color:#f92672">=</span> 4<span style="color:#f92672">.</span><span style="color:#a6e22e">5f</span><span style="color:#f92672">;</span> <span style="color:#75715e">// this is shorter way
+</span></span></span></code></pre></div><h2 id="characters-and-strings">Characters and Strings</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> character <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c&#39;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>String string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;string&#34;</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><h2 id="boolean">Boolean</h2>
+<p>Boolean type only accepts <code>true</code> or <code>false</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span></code></pre></div><h2 id="extra-">Extra 😉</h2>
+<p>You can merge strings with <code>+</code>. Let&rsquo;s see it in action.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String args<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    String fileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    String fileExt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;html&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Your file =&gt; &#34;</span> <span style="color:#f92672">+</span> fileName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">+</span> fileExt<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; Your file <span style="color:#f92672">=</span>&gt; index.html
+</span></span></code></pre></div>
+</section>
+
+      </main>
+      
+
+      <footer>
+    <p class="text-center"><span class="comment">// Last update: Oct 30, 2022 20:27 (&#43;03)</span></p>
+    <div class="d-flex justify-content-center">
+        <a href="/privacy">Privacy</a>
+    </div>
+</footer>
+
+
+      
+
+      
+      <script src="http://localhost:5500/js/prism.js"></script>
+    </body>
+</html>

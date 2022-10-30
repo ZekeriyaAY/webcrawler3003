@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <title>🐧 Express.js, a Node.js web application framework - Berkay Çubuk</title>
+    <meta property="og:title" content="Express.js, a Node.js web application framework - Berkay Çubuk">
+    <meta name="twitter:title" content="Express.js, a Node.js web application framework - Berkay Çubuk">
+    <meta itemprop="name" content="Express.js, a Node.js web application framework - Berkay Çubuk">
+    <meta name="application-name" content="Express.js, a Node.js web application framework - Berkay Çubuk">
+    <meta name="og:site_name" content="Express.js, a Node.js web application framework - Berkay Çubuk">
+    
+      <meta name="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta itemprop="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta property="og:description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta name="twitter:description" content="Computer Engineer, who can talk with computers &amp; websites">
+    
+    <meta name="robots" content="index,follow">
+    <meta name="HandheldFriendly" content="True">
+
+    
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/main.css" />
+
+    </head>
+<body>
+
+      <header>
+    <div class="title">Berkay Çubuk</div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
+
+
+      
+      <main>
+<section>
+  <h1>Express.js, a Node.js web application framework</h1>
+  
+  <p class="comment">// Created at: Feb 22, 2021</p>
+  
+</section>
+
+<section class="post-content">
+  <p>Express.js (aka Express) is a Node.js web application framework. With Express you can create web servers. If you want to create a backend with javascript, Express will be your first choice.</p>
+<h2 id="installation">Installation</h2>
+<p>If you want to developer javascript based applications you should <a href="https://nodejs.org/en/">install Node.js</a> on your computer. After installing Node.js you can test it with this command:</p>
+<pre><code>node -v
+</code></pre>
+<p>Node.js comes with NPM(Node Package Manager). Npm helps us to install node packages without pain. To test npm, you can run this command:</p>
+<pre><code>npm -v
+</code></pre>
+<p>Now we can start our first express project. Create a new directory for your project. And initialize package.json with:</p>
+<pre><code>npm init -y
+</code></pre>
+<p>This command will create a package.json file for you. <code>-y</code> is helps us to skip questions (package name, description, etc). After all, we can install Express with this command:</p>
+<pre><code>npm install express
+
+// for yarn (in the future posts I'll try to explain what is yarn.)
+
+yarn add express
+</code></pre>
+<p>Now, you have Express available in your project. Next step is creating the **index.js **file.</p>
+<h2 id="first-project">First Project</h2>
+<p>Our first code will be the classical &ldquo;Hello, World!&rdquo; example. Create a new file called <strong>index.js</strong>. And write this code in it:</p>
+<pre><code>// index.js
+const express = require('express')
+const app = express()
+
+const PORT = 5000
+
+app.get('/', (req, res) =&gt; {
+    res.send(&quot;Hello, World!&quot;)
+})
+
+app.listen(PORT, () =&gt; console.log('Our first server is started!'))
+</code></pre>
+<p>Now, open your terminal and run the server:</p>
+<pre><code>node index.js
+</code></pre>
+<p>After starting the server, go visit localhost:5000. If everything goes well, you should see the message we wrote.</p>
+<p>Ok, let&rsquo;s understand our code. First we imported the Express library, and then we passed the <strong>express()</strong> function to a variable. Created a variable called PORT to store server&rsquo;s port. And with the app.get() function we created http get request for our server. That&rsquo;s explains why we see our text when we visit the site. To understand it better, see that code:</p>
+<pre><code>app.get( URL we want to get our request, function (request, response) { ... } )
+
+// you can also use other requests as well
+
+app.post()   // post request, to send data to server
+app.patch()  // patch request, to update data
+app.put()    // put request, to update data if not create data
+app.delete() // delete request, to delete data
+</code></pre>
+<p>Last part is for the listening <strong>port <strong>we defined earlier. It&rsquo;s works when we hit our server with that port number, that&rsquo;s why we added port number to url. (localhost</strong>:5000</strong>)</p>
+
+</section>
+
+      </main>
+      
+
+      <footer>
+    <p class="text-center"><span class="comment">// Last update: Oct 30, 2022 20:27 (&#43;03)</span></p>
+    <div class="d-flex justify-content-center">
+        <a href="/privacy">Privacy</a>
+    </div>
+</footer>
+
+
+      
+
+      
+      <script src="http://localhost:5500/js/prism.js"></script>
+    </body>
+</html>
