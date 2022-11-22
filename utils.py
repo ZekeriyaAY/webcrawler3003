@@ -17,6 +17,12 @@ def manage_target(TARGET_URL, target):
     return target
 
 
+def manage_image(page, image):
+    if not image.startswith("http"):
+        image = page + image
+    return image
+
+
 def control_status_code(url):
     status_cmd = cmd("curl -LI " + url + " -w %{http_code} -s")
     status_code = int(status_cmd.split("\n")[0].split(" ")[1])

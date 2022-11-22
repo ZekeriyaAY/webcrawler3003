@@ -1,6 +1,2 @@
-certifi==2022.9.24
-charset-normalizer==2.1.1
-urllib3==1.26.12
-idna==3.4
 beautifulsoup4==4.11.1
 soupsieve==2.3.2.post1
