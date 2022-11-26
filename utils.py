@@ -2,7 +2,10 @@ import subprocess
 
 
 def cmd(cmd):
-    return subprocess.check_output(cmd, shell=True).decode()
+    try:
+        return subprocess.check_output(cmd, shell=True).decode('utf-8')
+    except:
+        return subprocess.check_output(cmd, shell=True)
 
 
 def control_target(TARGET_URL, target):
@@ -12,8 +15,9 @@ def control_target(TARGET_URL, target):
 
 
 def manage_target(TARGET_URL, target):
-    if target.startswith("/"):
-        target = TARGET_URL + target
+    if not target.startswith("http"):
+        target = TARGET_URL + '/' +target
+    
     return target
 
 
