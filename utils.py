@@ -2,17 +2,45 @@ import subprocess
 
 
 def cmd(cmd):
+    print(cmd)
     try:
         return subprocess.check_output(cmd, shell=True).decode('utf-8')
     except:
         return subprocess.check_output(cmd, shell=True)
 
 
-def control_target(TARGET_URL, target):
-    if target.startswith(TARGET_URL):
-        return True
-    return False
+def is_404(status_code):
+    return True if (status_code == 404) else False
 
+def is_3xx(status_code):
+    return True if (status_code < 400 and status_code >= 300) else False
+
+def get_redirect(TARGET_URL, url):
+    redirect_url_draft = cmd("curl -Ls -w %{url_effective} " + url)
+    redirect_url_draft = redirect_url_draft.split("</html>")[-1].replace("\r","").replace("\n","")
+    if not redirect_url_draft.startswith(TARGET_URL):
+        return None
+    return redirect_url_draft
+
+def control_status_code(TARGET_URL, url):
+    status_cmd = cmd("curl -LI " + url + " -w %{http_code} -s")
+    status_code = int(status_cmd.split("\n")[0].split(" ")[1])
+
+    if is_404(status_code):
+        return [url], False
+    elif is_3xx(status_code):
+        return [get_redirect(TARGET_URL, url), url], True
+    else:
+        return [url], True
+
+def control_target(TARGET_URL, test_url):
+    if not test_url.startswith(TARGET_URL):
+        return None
+    target_url, status_code = control_status_code(TARGET_URL, test_url)
+    if status_code and target_url[0]:
+        return target_url
+    else:   # 404 Controller
+        return None
 
 def manage_target(TARGET_URL, target):
     if not target.startswith("http"):
@@ -25,31 +53,6 @@ def manage_image(page, image):
     if not image.startswith("http"):
         image = page + image
     return image
-
-
-def control_status_code(url):
-    status_cmd = cmd("curl -LI " + url + " -w %{http_code} -s")
-    status_code = int(status_cmd.split("\n")[0].split(" ")[1])
-
-    if is_404(status_code):
-        return None
-    elif is_3xx(status_code):
-        return [get_redirect(url), url]
-    else:
-        return [url]
-
-
-def is_404(status_code):
-    return True if (status_code == 404) else False
-
-
-def is_3xx(status_code):
-    return True if (status_code < 400 and status_code >= 300) else False
-
-
-def get_redirect(url):
-    redirect_url_draft = cmd("curl -Ls -w %{url_effective} " + url)
-    return redirect_url_draft.split("\n")[-1]
 
 
 def robotsChecker():
