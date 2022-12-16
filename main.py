@@ -1,9 +1,19 @@
 from get_links import get_links
+from get_imgs import get_imgs
 
-TARGET_URL = "http://localhost:5500"
+TARGET_URL = "https://uludag.edu.tr/bm"
+
 
 def main():
-    get_links(TARGET_URL, TARGET_URL)
+    global TARGET_URL
+
+    if TARGET_URL.endswith("/"):
+        TARGET_URL = TARGET_URL[:-1]
+
+    print(f'\n\t[PAGE SCAN STARTED]')
+    pages = get_links(TARGET_URL, TARGET_URL)
+    print(f'\t[PAGE SCAN FINISHED]\n')
+
 
 if __name__ == "__main__":
     try:
