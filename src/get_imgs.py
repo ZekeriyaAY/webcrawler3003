@@ -1,4 +1,4 @@
-from utils import cmd, manage_image, control_status_code
+from src.utils import cmd, manage_image, control_status_code
 from bs4 import BeautifulSoup
 
 
