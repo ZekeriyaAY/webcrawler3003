@@ -1,4 +1,4 @@
-from utils import cmd, control_target, manage_target, control_status_code
+from src.utils import cmd, control_target, manage_target, control_status_code
 from bs4 import BeautifulSoup
 import warnings
 
@@ -55,7 +55,5 @@ def get_links(TARGET_URL, url):
                                 pages.append(potential_page)
 
                             get_links(TARGET_URL, potential_pages[0])  # just get that finish with / one ~> get blog/, not blog
-
-
 
     return pages

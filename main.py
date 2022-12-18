@@ -1,7 +1,6 @@
-from get_links import get_links
-from get_imgs import get_imgs
+from src.get_links import get_links
 
-TARGET_URL = "https://uludag.edu.tr/bm"
+TARGET_URL = "https://zekeriyaay.com"
 
 
 def main():
