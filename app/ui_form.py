@@ -49,14 +49,14 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.outputTextBrowser, 3, 0, 1, 3)
 
-        self.crawlInput = QLineEdit(self.layoutWidget)
-        self.crawlInput.setObjectName(u"crawlInput")
+        self.urlInput = QLineEdit(self.layoutWidget)
+        self.urlInput.setObjectName(u"urlInput")
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.crawlInput.sizePolicy().hasHeightForWidth())
-        self.crawlInput.setSizePolicy(sizePolicy)
-        self.crawlInput.setStyleSheet(u"QLineEdit {\n"
+        sizePolicy.setHeightForWidth(self.urlInput.sizePolicy().hasHeightForWidth())
+        self.urlInput.setSizePolicy(sizePolicy)
+        self.urlInput.setStyleSheet(u"QLineEdit {\n"
 "	padding-left: 5px;\n"
 "	padding-right: 5px;\n"
 "	border-style: solid;\n"
@@ -64,14 +64,14 @@ class Ui_MainWindow(object):
 "	border-radius: 8px;\n"
 "	border-color: lightgray;\n"
 "}")
-        self.crawlInput.setMaxLength(512)
+        self.urlInput.setMaxLength(512)
 
-        self.gridLayout.addWidget(self.crawlInput, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.urlInput, 2, 1, 1, 1)
 
-        self.crawlButton = QPushButton(self.layoutWidget)
-        self.crawlButton.setObjectName(u"crawlButton")
+        self.actionButton = QPushButton(self.layoutWidget)
+        self.actionButton.setObjectName(u"actionButton")
 
-        self.gridLayout.addWidget(self.crawlButton, 2, 2, 1, 1)
+        self.gridLayout.addWidget(self.actionButton, 2, 2, 1, 1)
 
         self.urlLabel = QLabel(self.layoutWidget)
         self.urlLabel.setObjectName(u"urlLabel")
@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         self.menuHelp = QMenu(self.menubar)
         self.menuHelp.setObjectName(u"menuHelp")
         MainWindow.setMenuBar(self.menubar)
-        QWidget.setTabOrder(self.crawlInput, self.outputTextBrowser)
+        QWidget.setTabOrder(self.urlInput, self.outputTextBrowser)
 
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuHelp.addAction(self.actionSource_Codes)
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.crawlButton.setDefault(True)
+        self.actionButton.setDefault(True)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -110,8 +110,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"webcrawler3003", None))
         self.actionSource_Codes.setText(QCoreApplication.translate("MainWindow", u"Source Codes", None))
         self.actionLicense.setText(QCoreApplication.translate("MainWindow", u"License", None))
-        self.crawlInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"https://uludag.edu.tr/bm", None))
-        self.crawlButton.setText(QCoreApplication.translate("MainWindow", u"Start Crawl", None))
+        self.urlInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"https://uludag.edu.tr/bm", None))
+        self.actionButton.setText(QCoreApplication.translate("MainWindow", u"Start Crawl XX", None))
         self.urlLabel.setText(QCoreApplication.translate("MainWindow", u"Website Address \n"
 "to Crawl", None))
         self.infoLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Please enter the website address to be crawled and click the &quot;Start Crawl&quot; button.</p></body></html>", None))

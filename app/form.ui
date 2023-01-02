@@ -54,7 +54,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="crawlInput">
+      <widget class="QLineEdit" name="urlInput">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -80,9 +80,9 @@
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QPushButton" name="crawlButton">
+      <widget class="QPushButton" name="actionButton">
        <property name="text">
-        <string>Start Crawl</string>
+        <string>Start Crawl XX</string>
        </property>
        <property name="default">
         <bool>true</bool>
@@ -143,7 +143,7 @@ to Crawl</string>
   </action>
  </widget>
  <tabstops>
-  <tabstop>crawlInput</tabstop>
+  <tabstop>urlInput</tabstop>
   <tabstop>outputTextBrowser</tabstop>
  </tabstops>
  <resources/>
