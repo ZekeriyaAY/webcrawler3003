@@ -1,11 +1,9 @@
-from src.get_links import get_links
-
-TARGET_URL = "https://zekeriyaay.com"
-
+from src.get_links import get_links,pages
+import colorama
 
 def main():
-    global TARGET_URL
-
+    colorama.init()
+    TARGET_URL = input("Target url: ")
     if TARGET_URL.endswith("/"):
         TARGET_URL = TARGET_URL[:-1]
 
@@ -16,6 +14,8 @@ def main():
 
 if __name__ == "__main__":
     try:
+
         main()
     except KeyboardInterrupt:
+        print(pages)
         print('bye!!')
