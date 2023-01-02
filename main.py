@@ -4,7 +4,6 @@ import colorama
 def main():
     colorama.init()
     TARGET_URL = input("Target url: ")
-
     if TARGET_URL.endswith("/"):
         TARGET_URL = TARGET_URL[:-1]
 
