@@ -1,16 +1,25 @@
-from src.utils import cmd, control_target, manage_target, control_status_code
+from src.utils import cmd, control_target, manage_target, url_encode
 from bs4 import BeautifulSoup
 import warnings
+from colorama import Fore
+
 
 pages = []
 
+def getPages():
+    global pages
+    return pages
 
 def get_links(TARGET_URL, url):
 
     global pages
-
-    html = cmd(f'curl -Ls {url}')
-    soup = BeautifulSoup(html, "html.parser")
+    #print("[GET_LINKS] ", end="")
+    url = url_encode(TARGET_URL,url)
+    html = cmd("curl -Ls \""+ url +"\"")
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+    except:
+        return
     warnings.filterwarnings('ignore')
 
     # Get all potential links
@@ -23,34 +32,21 @@ def get_links(TARGET_URL, url):
         "input":["value"]
     }
 
-
-    """
-    for link in soup.find_all("a"):
-        if "href" in link.attrs:
-    """
-    """
-                    for html_potential_tag in html_potential_tags:
-                #print(html_potential_tag)
-                for attr in attr_list:
-                    if attr in html_potential_tag.attrs:
-                        
-    """
     for html_tag in html_tags:
-        #html_tag = link
         html_potential_tags = soup.find_all(html_tag)
-        # link listesini cıkardık
         attr_list = html_tags[html_tag]
-        #print(attr_list)
         for html_potential_tag in html_potential_tags:
             for attr in attr_list:
                 if attr in html_potential_tag.attrs:
                     # variable name is potential_pages because of
                     # there is a potential page and potential page may a redirect page
+
                     potential_pages = manage_target(TARGET_URL, url, html_potential_tag.attrs[attr])
                     if potential_pages and potential_pages not in pages:
                         potential_pages = control_target(TARGET_URL, potential_pages)
                         if potential_pages:
-                            print(f'[FOUND] {url} ~~> {potential_pages}')
+                            print(Fore.RED + '[FOUND]' + Fore.WHITE + f' {url} ~~> {potential_pages[0]}')
+                            #print(f'[FOUND] {url_decode(TARGET_URL,url)} ~~> {url_decode(TARGET_URL,potential_pages[0])}')
                             for potential_page in potential_pages:
                                 pages.append(potential_page)
 
