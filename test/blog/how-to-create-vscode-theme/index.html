@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <title>🐧 How to Create VsCode Theme - Berkay Çubuk</title>
+    <meta property="og:title" content="How to Create VsCode Theme - Berkay Çubuk">
+    <meta name="twitter:title" content="How to Create VsCode Theme - Berkay Çubuk">
+    <meta itemprop="name" content="How to Create VsCode Theme - Berkay Çubuk">
+    <meta name="application-name" content="How to Create VsCode Theme - Berkay Çubuk">
+    <meta name="og:site_name" content="How to Create VsCode Theme - Berkay Çubuk">
+    
+      <meta name="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta itemprop="description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta property="og:description" content="Computer Engineer, who can talk with computers &amp; websites">
+      <meta name="twitter:description" content="Computer Engineer, who can talk with computers &amp; websites">
+    
+    <meta name="robots" content="index,follow">
+    <meta name="HandheldFriendly" content="True">
+
+    
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/prism.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:5500//css/main.css" />
+
+    </head>
+<body>
+
+      <header>
+    <div class="title">Berkay Çubuk</div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
+
+
+      
+      <main>
+<section>
+  <h1>How to Create VsCode Theme</h1>
+  
+  <p class="comment">// Created at: Dec 20, 2020</p>
+  
+</section>
+
+<section class="post-content">
+  <p>VS Code is popular code editor around developers. It has it&rsquo;s own marketplace so, you can easly customize your editor.</p>
+<p>Recently I developed my first VS Code theme and extension. I want to share with you how I did and how you can build your own.</p>
+<h2 id="what-is-theme">What is theme?</h2>
+<p>Themes are simply customized color palettes for editors. They define colors in json file so, you can download and use it on your editor.</p>
+<h2 id="what-is-required-to-get-started">What is required to get started?</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/">VS Code</a></li>
+<li><a href="https://nodejs.org/en/">Node</a></li>
+</ul>
+<p>If you installed these programs, we can move to installing required packages.</p>
+<p>We have to install some packages to start with theme boilerplate.</p>
+<pre><code>npm i -g yo generator-code
+</code></pre>
+<p>Now we have VS Code extension generator. To start developing, run:</p>
+<pre><code>yo code
+</code></pre>
+<p>After running it, you should see something like this:</p>
+<p><img src="yo-code-screenshot-1.png" alt="yo-code-screenshot-1"></p>
+<p>Select <strong>New Color Theme</strong> and hit enter.</p>
+<p>In this tutorial we build our theme from scratch so, pick <strong>No, start fresh</strong></p>
+<p><img src="yo-code-screenshot-2.png" alt="yo-code-screenshot-2"></p>
+<p>Answer the questions:</p>
+<p><img src="yo-code-screenshot-3.png" alt="yo-code-screenshot-3"></p>
+<p>Now yeoman should create a new folder named as your theme name.</p>
+<p>Open your theme folder with VS Code to get started.</p>
+<p>You should see this:</p>
+<p><img src="screenshot-4.png" alt="screenshot-4"></p>
+<p>Your will work with json file to edit theme.</p>
+<p>In the <strong>colors</strong> you can edit background, foreground and active colors. Just type something you want and it&rsquo;ll autofill for you.</p>
+<p>Inside the <strong>tokenColors</strong> as you can guess we&rsquo;ll work with syntax highlighting. You can edit colors for general or specific languages.</p>
+<p>Please take a look at the default code to understand it better.</p>
+<h2 id="how-to-see-the-theme-in-real-time">How to see the theme in real time?</h2>
+<p>In VS Code press <code>f5</code> to run debug mode. You should see another VS Code with your theme.</p>
+<p>When you make changes it&rsquo;ll automaticly update itself.</p>
+<h2 id="how-to-find-token-names">How to find token names?</h2>
+<p>VS Code give us token viewer tool. To run it type <code>Ctrl+Shift+P</code> and search for <strong>Developer: Inspect Editor Tokens and Scopes</strong>.</p>
+<p>After, just click the text you want to see. It&rsquo;ll show you what tokens it have.</p>
+<p><img src="screenshot-5.png" alt="screenshot-5"></p>
+<h2 id="how-to-change-colors">How to change colors?</h2>
+<p>With inspect editor find your token and search it inside theme json file. If you can&rsquo;t find it no worries you can easly add your own token.</p>
+<p>For this example I&rsquo;ll go with the public syntax. To find it I&rsquo;ll search for <strong>storage.modifier</strong>. You can also search it specific for php.</p>
+<p><img src="screenshot-6.png" alt="screenshot-6"></p>
+<p>To change the color just edit <strong>foreground</strong>.</p>
+<p><img src="screenshot-7.png" alt="screenshot-7"></p>
+<p>As you can see all <strong>storage.modifier</strong> tokens are changed.</p>
+<h2 id="further-more">Further more</h2>
+<p>VS Code shared articles on their website about publishing your own theme.</p>
+<p><a href="https://code.visualstudio.com/api/extension-guides/color-theme">Visit VS Code&rsquo;s website</a> to read more.</p>
+<p>Watch my video tutorial ☝</p>
+
+</section>
+
+      </main>
+      
+
+      <footer>
+    <p class="text-center"><span class="comment">// Last update: Oct 30, 2022 20:27 (&#43;03)</span></p>
+    <div class="d-flex justify-content-center">
+        <a href="/privacy">Privacy</a>
+    </div>
+</footer>
+
+
+      
+
+      
+      <script src="http://localhost:5500/js/prism.js"></script>
+    </body>
+</html>
