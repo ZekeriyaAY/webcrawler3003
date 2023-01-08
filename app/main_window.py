@@ -121,6 +121,7 @@ class MainWindow(QMainWindow):
         self.crawlFinished()
 
     def crawlFinished(self):
+        print("Crawling finished!")
         self.end = time.time()
         self.buttonUpdate(status="stop")    # Change button text
         self.inputUpdate(status="stop")     # Enable input
