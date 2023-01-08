@@ -18,7 +18,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
     QMainWindow, QMenu, QMenuBar, QPushButton,
-    QSizePolicy, QTextBrowser, QVBoxLayout, QWidget)
+    QSizePolicy, QTextBrowser, QTextEdit, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -81,6 +82,7 @@ class Ui_MainWindow(object):
 "	border-width: 1px;\n"
 "	border-color: lightgray;\n"
 "}")
+        self.outputTextBrowser.setAutoFormatting(QTextEdit.AutoAll)
         self.outputTextBrowser.setOpenExternalLinks(True)
 
         self.verticalLayout.addWidget(self.outputTextBrowser)

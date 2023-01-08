@@ -105,6 +105,9 @@ to Crawl</string>
 	border-color: lightgray;
 }</string>
        </property>
+       <property name="autoFormatting">
+        <set>QTextEdit::AutoAll</set>
+       </property>
        <property name="openExternalLinks">
         <bool>true</bool>
        </property>
