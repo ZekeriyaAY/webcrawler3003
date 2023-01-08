@@ -16,20 +16,26 @@
     <height>600</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>webcrawler3003</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>7</y>
+      <y>0</y>
       <width>781</width>
       <height>561</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <property name="leftMargin">
       <number>10</number>
      </property>
@@ -39,7 +45,58 @@
      <property name="rightMargin">
       <number>10</number>
      </property>
-     <item row="3" column="0" colspan="3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="urlLabel">
+         <property name="text">
+          <string>Website Address 
+to Crawl</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="urlInput">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 8px;
+	border-color: lightgray;
+}</string>
+         </property>
+         <property name="maxLength">
+          <number>512</number>
+         </property>
+         <property name="placeholderText">
+          <string>https://uludag.edu.tr</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="actionButton">
+         <property name="text">
+          <string>Start Crawl</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
       <widget class="QTextBrowser" name="outputTextBrowser">
        <property name="styleSheet">
         <string notr="true">QTextBrowser {
@@ -53,60 +110,10 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="urlInput">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit {
-	padding-left: 5px;
-	padding-right: 5px;
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 8px;
-	border-color: lightgray;
-}</string>
-       </property>
-       <property name="maxLength">
-        <number>512</number>
-       </property>
-       <property name="placeholderText">
-        <string>https://uludag.edu.tr/bm</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QPushButton" name="actionButton">
-       <property name="text">
-        <string>Start Crawl XX</string>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="urlLabel">
-       <property name="text">
-        <string>Website Address 
-to Crawl</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0" colspan="2">
+     <item>
       <widget class="QLabel" name="infoLabel">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter the website address to be crawled and click the &amp;quot;Start Crawl&amp;quot; button.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Please enter the website address to be crawled and click the &quot;Start Crawl&quot; button.</string>
        </property>
       </widget>
      </item>
@@ -126,12 +133,12 @@ to Crawl</string>
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionSource_Codes"/>
+    <addaction name="actionSourceCodes"/>
     <addaction name="actionLicense"/>
    </widget>
    <addaction name="menuHelp"/>
   </widget>
-  <action name="actionSource_Codes">
+  <action name="actionSourceCodes">
    <property name="text">
     <string>Source Codes</string>
    </property>
@@ -144,6 +151,7 @@ to Crawl</string>
  </widget>
  <tabstops>
   <tabstop>urlInput</tabstop>
+  <tabstop>actionButton</tabstop>
   <tabstop>outputTextBrowser</tabstop>
  </tabstops>
  <resources/>
