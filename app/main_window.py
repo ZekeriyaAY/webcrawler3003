@@ -32,7 +32,6 @@ class Worker(QThread):
         while self.crawlStatus:
             self.pages = mkdir_pages(self.TARGET_URL)
             self.print_pages.emit(len(self.pages))
-            print(self.pages)
             time.sleep(2)
 
 
