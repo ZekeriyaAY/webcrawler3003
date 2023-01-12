@@ -3,10 +3,22 @@ from bs4 import BeautifulSoup
 import warnings
 from colorama import Fore
 import sys
+import os
 
 
 pages = []
 crawlingStatus = True   # crawling is active
+
+
+def mkdir_pages(TARGET_URL):
+    global pages
+
+    for page in pages:
+        if '//' in TARGET_URL:
+            page = page.split('//', 1)[1]
+        os.makedirs(f'output/{page}', exist_ok=True)
+    
+    return pages
 
 
 def getPages():
