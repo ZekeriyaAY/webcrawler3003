@@ -1,9 +1,12 @@
 from PySide6.QtWidgets import QMainWindow
-from PySide6.QtCore import QUrl
+from PySide6.QtCore import QUrl, QThread, Signal
 from PySide6.QtGui import QDesktopServices
 from threading import Thread
-from src.get_links import get_links, setCrawlingStatus
+from src.get_links import get_links, setCrawlingStatus, mkdir_pages
+from src.utils import cmd
 import time
+import os
+import shutil
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -13,6 +16,26 @@ import time
 from app.ui_form import Ui_MainWindow
 
 
+class Worker(QThread):
+    def __init__(self, _TARGET_URL, _crawlStatus):
+        super().__init__()
+        self.TARGET_URL = _TARGET_URL
+        self.crawlStatus = _crawlStatus
+        self.pages = []
+
+    print_pages = Signal(int)
+
+    def set_crawlStatus(self, status):
+        self.crawlStatus = status
+
+    def run(self):
+        while self.crawlStatus:
+            self.pages = mkdir_pages(self.TARGET_URL)
+            self.print_pages.emit(len(self.pages))
+            print(self.pages)
+            time.sleep(2)
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -20,14 +43,16 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.crawlStatus = False   # crawling is not active
+        self.TARGET_URL = ""
 
         self.ui.actionButton.clicked.connect(self.buttonClicked)
-        self.ui.actionButton.clicked.connect(
-            self.thread)   # Start crawling in a thread
+        self.ui.actionButton.clicked.connect(self.printOutput)
+        # self.ui.actionButton.clicked.connect(
+        #     self.thread)   # Start crawling in a thread
         self.ui.actionSourceCodes.triggered.connect(self.openSourceCodes)
         self.ui.actionLicense.triggered.connect(self.openLicense)
 
-    def thread(self):
+    def threadCrawl(self):
         if self.ui.actionButton.text() != "Stop Crawling!":  # If crawling will be stopped
             return
 
@@ -92,8 +117,28 @@ class MainWindow(QMainWindow):
             self.ui.infoLabel.setText(
                 f'Crawling time: {int(hours):0>2}h {int(minutes):0>2}m {seconds:05.2f}s')
 
-    def outputUpdate(self, output):
+    def printPages(self, len_pages):
+        self.ui.outputTextBrowser.clear()
+        self.ui.outputTextBrowser.append(
+            f"Total crawled pages: <b>{len_pages}</b><br>")
+        output = cmd("tree/tree.py output/.")
         self.ui.outputTextBrowser.append(output)
+
+    def printOutput(self):
+        if self.crawlStatus == False:  # If crawling is not active
+            try:
+                self.worker.set_crawlStatus(False)
+            except:
+                pass
+        if self.ui.actionButton.text() == "Stop Crawling!":  # If crawling will be stopped
+            self.worker = Worker(self.TARGET_URL, self.crawlStatus)
+            self.worker.start()
+            self.worker.print_pages.connect(self.printPages)
+
+    def deleteOutput(self):
+        if os.path.exists("output"):
+            shutil.rmtree("output")
+            os.makedirs("output/")
 
     def openSourceCodes(self):
         url = QUrl("https://github.com/ZekeriyaAY/webcrawler3003")
@@ -113,19 +158,21 @@ class MainWindow(QMainWindow):
     def crawlStart(self):
         self.crawlStatusUpdate(status=True)  # crawling is active
 
-        TARGET_URL = self.ui.urlInput.text()
-        if TARGET_URL.endswith("/"):
-            TARGET_URL = TARGET_URL[:-1]
+        self.TARGET_URL = self.ui.urlInput.text()
+        if self.TARGET_URL.endswith("/"):
+            self.TARGET_URL = self.TARGET_URL[:-1]
 
-        pages = get_links(TARGET_URL, TARGET_URL)
+        pages = get_links(self.TARGET_URL, self.TARGET_URL)
         self.crawlFinished()
 
     def crawlFinished(self):
         print("Crawling finished!")
         self.end = time.time()
+        self.crawlStatusUpdate(status=False)  # crawling is not active
         self.buttonUpdate(status="stop")    # Change button text
         self.inputUpdate(status="stop")     # Enable input
         self.infoUpdate(status="stop")    # Update info label
+        self.printOutput()
 
     def buttonClicked(self):
         if self.inputEmpty():   # If input is empty or not a valid url
@@ -140,5 +187,6 @@ class MainWindow(QMainWindow):
         self.buttonUpdate(status="start")   # Change button text
         self.inputUpdate(status="start")    # Disable input
         self.infoUpdate(status="start")    # Update info label
+        self.deleteOutput()     # Delete output folder
 
-        self.ui.outputTextBrowser.clear()   # Clear output text browser
+        self.threadCrawl()   # Start crawling
