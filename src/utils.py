@@ -4,6 +4,13 @@ from colorama import Fore
 
 DEBUG_MODE = 0
 
+def rreplace(string, string_to_be_changed, string_to_replace):
+    # myStr = "mississippi"
+    # myStr = rreplace(myStr,"iss","XXX")
+    # result: missXXXippi
+    return string_to_replace.join(string.rsplit(string_to_be_changed, 1))
+
+
 def url_encode(TARGET_URL, url):
     path = url[len(TARGET_URL):].replace(" ","%20")
     return TARGET_URL + path
@@ -99,8 +106,11 @@ def manage_target(TARGET_URL, url, target):
         blacklist = ['tel:', 'mailto:', 'javascript:','data:']
         if target.startswith(tuple(blacklist)):
             return None
-        elif "." in rightmost_path and rightmost_path.count(".") == 1:
-            target = url + "/../" + target
+        elif "." in rightmost_path and rightmost_path.count(".") == 1 and \
+                (rightmost_path != TARGET_URL.replace("https://","") and rightmost_path != TARGET_URL.replace("http://","")):
+            #print(Fore.CYAN, "[MANAGE_TARGET_DEBUG2]", Fore.WHITE, url, target, rightmost_path)
+            target = rreplace(url, rightmost_path, target)
+            #print(Fore.CYAN, "[MANAGE_TARGET_DEBUG3]", Fore.WHITE, target)
             return target
         elif target.startswith(TARGET_URL):
             return target
@@ -111,6 +121,8 @@ def manage_target(TARGET_URL, url, target):
             return None
 
     elif target.startswith("."):
+        if "./" == target:
+            target = ""
         if url.endswith("/"):
             url = url[:-1]
         target = url + "/" + target
