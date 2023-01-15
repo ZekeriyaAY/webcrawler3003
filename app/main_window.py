@@ -120,7 +120,7 @@ class MainWindow(QMainWindow):
         self.ui.outputTextBrowser.clear()
         self.ui.outputTextBrowser.append(
             f"Total crawled pages: <b>{len_pages}</b><br>")
-        output = cmd("tree/tree.py output/.")
+        output = cmd("tree/tree.py output")
         self.ui.outputTextBrowser.append(output)
 
     def printOutput(self):
