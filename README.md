@@ -1,5 +1,4 @@
 # 🕷 webcrawler3003
-Still in progress.
 
 ## 📚 Installation
 
